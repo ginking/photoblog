@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block load %}
+<link href="/media/css/gallery.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/media/js/jquery.min.js"></script>
+<script type="text/javascript" src="/media/js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="/media/js/pirobox.min.js"></script>
+<script type="text/javascript" src="/media/js/gallery.js"></script>
+{% endblock %}
+{% block title %}Обзор фотографий{% endblock %}
+{% block context %}
+<div class="gallery">
+    {% for img in photos %}
+    <div><center><a href="/{{ img.image }}" rel="gallery" class="pirobox_gall" title="{{ img.name }}"><img src="{{ img.image.url_160x120 }}" /></a></center></div>
+    {% endfor %}
+</div>
+{% endblock %}

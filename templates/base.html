@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>{% block title %}{{ photo.name }}{% endblock %}</title>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    <link href="/media/css/style.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="/media/js/url.js"></script>
+    <script type="text/javascript" src="/media/js/rotate.js"></script>
+    <script>var p = new list_counter({{imgs_id}}, {{ photo.id }}); var img_urls = {% autoescape off %}{ {{ img_urls }} }{% endautoescape %}</script>
+    {% block load %}{% endblock %}
+</head>
+<body>
+
+<div id="scrap"></div>
+<div id="menu">
+    <ul class="menu_line1">
+        <li><a href=".">Пункт  1</a></li>
+        <li><a href=".">Пункт  1</a></li>
+        <li class="sp"><a href=".">Пункт  1</a></li>
+        <li><a href=".">Пункт  1</a></li>
+    </ul>
+    <ul class="menu_line2">
+        <li><a href="/gallery/">Альбом целиком</a></li>
+        <li><a href=".">Пункт  1</a></li>
+        <li><a href=".">Пункт  1</a></li>
+        <li><a href=".">Пункт  1</a></li>
+    </ul>
+</div>
+<div id="base">{% block context %}
+    <div class="bframe"></div>
+    <div class="center_div"><div class="center">
+        <div class="pframe">
+            <div class="fcenter2" onClick="p.next(); return false;"></div>
+            <div class="ftop"></div>
+            <div class="fcenter"><img id="photo" src="{% if photo.image.url_312x398 %}{{ photo.image.url_312x398 }}{% else %}/media/images/pic.jpg{% endif %}"/></div>
+            <div class="fbottom"><a href="." onClick="p.prev(); return false;"><img id="prev" src="/media/images/left.png" /></a><a href="." onClick="p.next(); return false;"><img id="next" src="/media/images/right.png" /></a></div>
+        </div>
+    </div></div>
+    <div class="list">
+        <div id="hand_title">{{ photo.name }}</div>
+        <div id="hand_txt">{{ photo.content }}</div>
+    </div>{% endblock %}
+</div>
+
+</body>
+</html>
